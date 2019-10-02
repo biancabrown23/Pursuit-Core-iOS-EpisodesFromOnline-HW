@@ -8,20 +8,19 @@
 
 import Foundation
 
-class ElementAPIManager {
+class APIClientManager {
     private init() {}
     
-    static let shared = ElementAPIManager()
+    static let shared = APIClientManager()
     // this is a singleton pattern of the ElementAPIManager
     
     
-    func getElements(completionHandler: @escaping (Result<[Elements],AppError>) -> ()) {
+    func getElements(completionHandler: @escaping (Result<[showModel],AppError>) -> ()) {
         
-        let urlString = " http://api.tvmaze.com/search/shows?q=girls"
+        let urlString = "http://api.tvmaze.com/search/shows?q=g"
         
         guard let url = URL(string: urlString) else {completionHandler(.failure(.badURL));
             return
-            
         }
         
         NetworkHelper.manager.performDataTask(withUrl: url, andMethod: .get) {(result) in
@@ -30,8 +29,8 @@ class ElementAPIManager {
             completionHandler(.failure(error))
           case .success(let data):
             do {
-              let elementInfo = try JSONDecoder().decode([Elements].self, from: data)
-              completionHandler(.success(elementInfo))
+              let elementInfo = try JSONDecoder().decode([showModel].self, from: data)
+                completionHandler(.success(elementInfo))
             } catch {
               completionHandler(.failure(.couldNotParseJSON(rawError: error)))
             }
@@ -39,41 +38,31 @@ class ElementAPIManager {
         }
       }
     
+    func getEpisdoes(showid: Int, completionHandler: @escaping (Result<[EpisodeWrapper],AppError>) -> ()) {
+        
+        let urlString = "http://api.tvmaze.com/shows/\(showid)/episodes"
+    }
     
-    
-    func postFavouriteElement(favorite: FavoriteElements, completionHandler: @escaping (Result<Data,AppError>) -> ()) {
-        
-        let urlString = "https://5d83bc5ebaffda001476aa88.mockapi.io/api/v1/favorites"
-        
-        guard let url = URL(string: urlString) else {
-            completionHandler(.failure(.badURL));
-            return
-            
-        }
-        
-        guard let encodedData = try? JSONEncoder().encode(favorite) else {
-            completionHandler(.failure(.noDataReceived))
-            
-            return
-        
-        }
-        
-        NetworkHelper.manager.performDataTask(withUrl: url, andHTTPBody: encodedData, andMethod: .post) { (result) in
-            switch result {
-            case .failure(let error):
-                completionHandler(.failure(.other(rawError: error)))
-            case .success(let success):
-                completionHandler(.success(success))
-            }
-        }
-        
-            
-//            .performDataTask(withUrl: urlString, andHTTPBody: encodedData, andMethod: .post) { (result) in
+
+}
+
+
+//    NetworkHelper.manager.performDataTask(withUrl: url, andHTTPBody: encodedData, andMethod: .post) { (result) in
 //            switch result {
 //            case .failure(let error):
-//                completionHandler(.failure())
+//                completionHandler(.failure(.other(rawError: error)))
+//            case .success(let success):
+//                completionHandler(.success(success))
 //            }
-
-        }
-        }
-
+//        }
+//
+//
+////            .performDataTask(withUrl: urlString, andHTTPBody: encodedData, andMethod: .post) { (result) in
+////            switch result {
+////            case .failure(let error):
+////                completionHandler(.failure())
+////            }
+//
+//        }
+//        }
+//

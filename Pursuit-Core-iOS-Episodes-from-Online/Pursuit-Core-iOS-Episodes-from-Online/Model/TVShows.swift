@@ -13,7 +13,17 @@ struct showModel: Codable {
 }
 
 struct ShowWrapper: Codable {
-    let rating: Double
-    let name: String
-    let image: String
+    let rating: ratingWrapper
+    let name: String?
+    let image: imageWrapper?
 }
+
+struct ratingWrapper: Codable {
+    let average: Double?
+}
+
+
+struct imageWrapper: Codable {
+    let medium: String
+}
+
