@@ -10,6 +10,12 @@ import UIKit
 
 class ShowsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var showImageOutlet: UIImageView!
+    
+    @IBOutlet weak var showNameLabel: UILabel!
+    
+    @IBOutlet weak var showRatingLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
