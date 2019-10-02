@@ -19,7 +19,8 @@ class APIClientManager {
         
         let urlString = "http://api.tvmaze.com/search/shows?q=g"
         
-        guard let url = URL(string: urlString) else {completionHandler(.failure(.badURL));
+        guard let url = URL(string: urlString) else {
+            completionHandler(.failure(.badURL));
             return
         }
         
@@ -29,8 +30,8 @@ class APIClientManager {
             completionHandler(.failure(error))
           case .success(let data):
             do {
-              let elementInfo = try JSONDecoder().decode([showModel].self, from: data)
-                completionHandler(.success(elementInfo))
+              let showInfo = try JSONDecoder().decode([showModel].self, from: data)
+                completionHandler(.success(showInfo))
             } catch {
               completionHandler(.failure(.couldNotParseJSON(rawError: error)))
             }
@@ -41,6 +42,24 @@ class APIClientManager {
     func getEpisdoes(showid: Int, completionHandler: @escaping (Result<[EpisodeWrapper],AppError>) -> ()) {
         
         let urlString = "http://api.tvmaze.com/shows/\(showid)/episodes"
+        
+        guard let url = URL(string: urlString) else {
+            completionHandler(.failure(.noDataReceived));
+            return
+        }
+        
+        NetworkHelper.manager.performDataTask(withUrl: url, andMethod: .get) { (result) in
+            switch result {
+            case .failure(let error):
+                completionHandler(.failure(error))
+            case .success(let data):
+                do {
+                    let episodeInfo = try JSONDecoder().decode([EpisodeWrapper].self, from: data); completionHandler(.success(episodeInfo)) }
+                catch {
+                    completionHandler(.failure(.couldNotParseJSON(rawError: error)))
+                }
+            }
+        }
     }
     
 
