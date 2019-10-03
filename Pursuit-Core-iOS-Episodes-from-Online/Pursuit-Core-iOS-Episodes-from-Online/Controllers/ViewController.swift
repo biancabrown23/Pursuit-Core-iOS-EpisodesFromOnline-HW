@@ -24,18 +24,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         showsSearchBar.delegate = self
         showTableView.delegate = self
         showTableView.dataSource = self
-        
+        loadShowData(keyword: showsSearchBar.text!)
     }
     
     
-    var searchString: String? {
-        didSet {
-            loadShowData()
-            showTableView.reloadData()
-        }
-    }
+//    var searchString: String? {
+//        didSet {
+//            loadShowData(keyword: searchString!)
+//            showTableView.reloadData()
+//        }
+//    }
         
-    private func loadShowData() { APIClientManager.shared.getElements(searchString: searchString ?? "g") { (result) in
+    private func loadShowData(keyword: String) { APIClientManager.shared.getElements(keyword: keyword) { (result) in
+        DispatchQueue.main.async {
             switch result {
             case .failure(let error):
                 print(error)
@@ -45,6 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
         // Do any additional setup after loading the view.
+    }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,6 +70,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print(error)
                 case .success(let image):
                     cell.imageView?.image = image
+                    self.showTableView.reloadData()
                 }
             }
         }
@@ -78,8 +81,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchString = searchBar.text
-    }
-}
-
-
+        if let word = searchBar.text {
+            if !word.isEmpty {
+                loadShowData(keyword: word)
+                showTableView.reloadData()
+                } else {
+                    showTableView.reloadData()
+                        
+                    }
+                }
+            }
+        }

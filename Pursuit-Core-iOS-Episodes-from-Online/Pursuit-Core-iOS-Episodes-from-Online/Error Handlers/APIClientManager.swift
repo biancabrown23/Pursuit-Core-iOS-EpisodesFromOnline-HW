@@ -15,9 +15,9 @@ class APIClientManager {
     // this is a singleton pattern of the ElementAPIManager
     
     
-    func getElements(searchString: String, completionHandler: @escaping (Result<[ShowInfo],AppError>) -> ()) {
+    func getElements(keyword: String, completionHandler: @escaping (Result<[ShowInfo],AppError>) -> ()) {
         
-        let urlString = "http://api.tvmaze.com/search/shows?q=\(searchString)"
+        let urlString = "http://api.tvmaze.com/search/shows?q=\(keyword)"
         
         guard let url = URL(string: urlString) else {
             completionHandler(.failure(.badURL));
