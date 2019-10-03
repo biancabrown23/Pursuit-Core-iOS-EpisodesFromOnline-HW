@@ -52,8 +52,8 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="showEpNameLabel" destination="4uC-Pq-uXw" id="adi-Tf-taq"/>
                                             <outlet property="showImageOutlet" destination="myp-bM-tIm" id="lVv-Cl-4V7"/>
+                                            <outlet property="showNameLabel" destination="4uC-Pq-uXw" id="Fjm-iZ-GSZ"/>
                                             <outlet property="showRatingLabel" destination="nVM-W0-jSQ" id="ZTD-l8-aJn"/>
                                         </connections>
                                     </tableViewCell>
@@ -72,6 +72,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="showTableView" destination="eOF-Ys-PXV" id="uA9-84-tg0"/>
+                        <outlet property="showsSearchBar" destination="Gck-wE-was" id="q51-FS-9g6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
