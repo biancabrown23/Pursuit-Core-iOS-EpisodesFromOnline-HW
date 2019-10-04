@@ -15,6 +15,8 @@
 		963DDD89234509CE00167832 /* DetailedEpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DDD88234509CE00167832 /* DetailedEpisodeViewController.swift */; };
 		963DDD8D234547B900167832 /* ShowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DDD8C234547B900167832 /* ShowsTableViewCell.swift */; };
 		963DDD91234569C100167832 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963DDD90234569C100167832 /* ImageHelper.swift */; };
+		96AC04D62346B19500683C52 /* EpisodesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC04D52346B19500683C52 /* EpisodesTableViewCell.swift */; };
+		96AC04D82346B1AD00683C52 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AC04D72346B1AD00683C52 /* EpisodesViewController.swift */; };
 		CD01CD5C232178AF002D0255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01CD5B232178AF002D0255 /* AppDelegate.swift */; };
 		CD01CD5E232178AF002D0255 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01CD5D232178AF002D0255 /* ViewController.swift */; };
 		CD01CD61232178AF002D0255 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD01CD5F232178AF002D0255 /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 		963DDD88234509CE00167832 /* DetailedEpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEpisodeViewController.swift; sourceTree = "<group>"; };
 		963DDD8C234547B900167832 /* ShowsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsTableViewCell.swift; sourceTree = "<group>"; };
 		963DDD90234569C100167832 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		96AC04D52346B19500683C52 /* EpisodesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesTableViewCell.swift; sourceTree = "<group>"; };
+		96AC04D72346B1AD00683C52 /* EpisodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		CD01CD58232178AF002D0255 /* Pursuit-Core-iOS-Episodes-from-Online.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pursuit-Core-iOS-Episodes-from-Online.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD01CD5B232178AF002D0255 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD01CD5D232178AF002D0255 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		963DDD7E234437B500167832 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				96AC04D72346B1AD00683C52 /* EpisodesViewController.swift */,
 				963DDD88234509CE00167832 /* DetailedEpisodeViewController.swift */,
 				CD01CD5D232178AF002D0255 /* ViewController.swift */,
 			);
@@ -104,6 +109,7 @@
 		963DDD812344FD2200167832 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				96AC04D52346B19500683C52 /* EpisodesTableViewCell.swift */,
 				963DDD8C234547B900167832 /* ShowsTableViewCell.swift */,
 			);
 			path = "Table View Cells";
@@ -255,9 +261,11 @@
 			files = (
 				963DDD752344338E00167832 /* NetworkManager.swift in Sources */,
 				963DDD832345031E00167832 /* TVEpisodes.swift in Sources */,
+				96AC04D62346B19500683C52 /* EpisodesTableViewCell.swift in Sources */,
 				963DDD772344339E00167832 /* APIClientManager.swift in Sources */,
 				963DDD79234433B500167832 /* AppError.swift in Sources */,
 				CD01CD5E232178AF002D0255 /* ViewController.swift in Sources */,
+				96AC04D82346B1AD00683C52 /* EpisodesViewController.swift in Sources */,
 				963DDD7C234434F200167832 /* TVShows.swift in Sources */,
 				963DDD89234509CE00167832 /* DetailedEpisodeViewController.swift in Sources */,
 				963DDD8D234547B900167832 /* ShowsTableViewCell.swift in Sources */,
